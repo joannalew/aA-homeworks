@@ -1,0 +1,36 @@
+Database Schema
+
+users
+column            data      details
+id                integer   not null, primary key
+first_name        string    not null
+last_name         string    not null
+email             string    not null, indexed, unique
+password_digest   string    not null
+session_token     string    not null, indexed, unique
+zip_code          integer       
+review_count      integer   not null
+created_at        datetime  not null
+updated_at        datetime  not null
+
+business
+id                integer   not null, primary key
+name              string    not null
+address           string    not null, unique w/ name
+city              string    not null
+state             string    not null
+stars             double    not null
+review_count      integer   not null
+open              boolean   not null, default false
+photo             string    
+created_at        datetime  not null
+updated_at        datetime  not null
+
+reviews
+id                integer   not null, primary key
+author_id         integer   not null, foreign key
+business_id       integer   not null, foreign key, unique w/ author_id
+stars             integer   not null
+text              string    not null
+created_at        datetime  not null
+updated_at        datetime  not null
